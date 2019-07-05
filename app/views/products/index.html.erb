@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>Продукты</h1>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Image url</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Vid</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><span class="border border-primary">
+          <%= link_to(image_tag(product.image_url, class: 'img-thumbnail', size: "80x80"), product) %></span></td>
+        <td><%= product.title %></td>
+        <td><%= product.description %></td>
+        <td><%= product.vid %></td>
+        <td><%= product.price %></td>            
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
